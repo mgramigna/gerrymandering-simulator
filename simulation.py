@@ -12,7 +12,7 @@ def main():
 def simulate(length, dist):
     dists = []
     for i in range(length):
-        row, col = = pick_rand_idx(dist.n), pick_rand_idx(dist.n)
+        row, col = pick_rand_idx(dist.n), pick_rand_idx(dist.n)
         precinct = dist.grid[row,col]
         neighbors = dist.get_neighbors(row,col)
 
