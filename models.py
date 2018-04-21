@@ -1,11 +1,15 @@
-class Precinct(object):
-    def __init__(self, party, district_id):
-        self.party = party
-        self.district_id = district_id
-    def __str__(self):
-        return "District: %s; Party: %s" % (self.district_id, self.party)
+from collections import defaultdict
 
 class Districting(object):
+    """
+    Class representing a districting grid
+
+    Note:
+        self.n is assigned automatically based on the shape of the `grid` arg
+
+    Args:
+        grid (numpy.ndarray): a 2d array of tuples for each precinct in a districting
+    """
     def __init__(self, grid):
         self.grid = grid
         self.n = grid.shape[0]
@@ -18,6 +22,13 @@ class Districting(object):
         return s
 
     def get_neighbors(self,row,col):
+        """
+        Get all (non-diagonal) neighbors for a given precinct
+
+        Args:
+            row (int): index for the row of the precinct
+            col (int): index for the column of the precinct
+        """
         neighbors = []
 
         if row-1 >= 0:
