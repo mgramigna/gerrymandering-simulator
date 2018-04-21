@@ -41,3 +41,16 @@ class Districting(object):
             neighbors.append(self.grid[row,col+1])
 
         return neighbors
+
+    def get_party_count(self):
+        """
+        Gets the number of precincts for each party in all districts
+        """
+        districts = defaultdict(lambda: defaultdict(int))
+
+        for row in range(self.n):
+            for col in range(self.n):
+                party, district = self.grid[row,col]
+                districts[district][party] += 1
+
+        return districts
