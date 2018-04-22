@@ -1,9 +1,9 @@
-import time
 import random
 import math
 import argparse
 import numpy as np
 from uuid import uuid4
+from copy import copy
 from models import Districting, Precinct
 
 # Picks a random integer between 0 and n-1
@@ -38,7 +38,7 @@ def simulate(length, dist):
         neighbors = dist.get_neighbors(row,col)
         for neighbor in neighbors:
             if neighbor.district_id != precinct.district_id:
-                proposed_dist = Districting(dist.grid)
+                proposed_dist = Districting(copy(dist.grid))
                 proposed_dist.grid[row,col] = Precinct(precinct.party, neighbor.district_id)
                 if proposed_dist.is_valid():
                     dist.flip(precinct, neighbor, row, col)
