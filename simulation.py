@@ -24,8 +24,16 @@ def main(n, step_length, trials, filepath):
     with open(filepath) as f:
         data = json.load(f)
 
+    if len(data) != n:
+        print 'ERROR: Provided json file does not match the specified dimension'
+        return
+
     row,col = (0,0)
     for d in data:
+        if len(d) != n:
+            print 'ERROR: Provided json file does not match the specified dimension'
+            return
+
         for p in d:
             grid[row,col] = Precinct(p.get('party'), p.get('district_id'))
             col += 1
@@ -34,7 +42,7 @@ def main(n, step_length, trials, filepath):
 
     dist = Districting(grid)
     if not dist.is_valid():
-        print 'Proposed districting is not valid'
+        print 'ERROR: Proposed districting is not valid'
         return
 
     print 'Original Districting\n---------------\n\n', dist
