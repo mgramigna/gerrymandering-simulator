@@ -69,7 +69,7 @@ class Districting(object):
         return districts
 
     def is_valid(self):
-        return self.__is_contiguous()
+        return self.__is_contiguous() and self.__is_connected()
 
     def flip(self,precinct,neighbor,row,col):
         self.grid[row,col] = Precinct(precinct.party, neighbor.district_id)
@@ -83,6 +83,31 @@ class Districting(object):
                     contiguous_precinct_count += 1
                     break
         return contiguous_precinct_count == self.n**2
+
+    def __is_connected(self):
+        precincts_per_district = defaultdict(lambda: defaultdict(int))
+
+        for row,col in np.ndindex(self.shape):
+            precincts_per_district[self.grid[row,col].district_id]['expected'] += 1
+
+        searched_districts = set()
+        for row,col in np.ndindex(self.shape):
+            if self.grid[row,col].district_id in searched_districts:
+                continue
+            searcher = [self.grid[row,col]]
+            current_district = self.grid[row,col].district_id
+            searched_districts.add(current_district)
+            seen = set()
+            while len(searcher) > 0:
+                precinct = searcher.pop()
+                precincts_per_district[precinct.district_id]['seen'] += 1
+                seen.add(precinct.id)
+                searcher.extend([n for n in self.get_neighbors(precinct) if n.id not in seen and n.district_id == precinct.district_id])
+            if precincts_per_district[current_district]['seen'] != precincts_per_district[current_district]['expected']:
+                return False
+        return True
+
+
     def __index_of(self, precinct):
         for row,col in np.ndindex(self.shape):
             if self.grid[row,col].id == precinct.id:
