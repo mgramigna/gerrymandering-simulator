@@ -1,0 +1,41 @@
+[
+  [{
+      "party": "D",
+      "district_id": "a"
+    },
+    {
+      "party": "D",
+      "district_id": "a"
+    },
+    {
+      "party": "R",
+      "district_id": "b"
+    }
+  ],
+  [{
+      "party": "R",
+      "district_id": "a"
+    },
+    {
+      "party": "D",
+      "district_id": "b"
+    },
+    {
+      "party": "R",
+      "district_id": "b"
+    }
+  ],
+  [{
+      "party": "R",
+      "district_id": "c"
+    },
+    {
+      "party": "R",
+      "district_id": "c"
+    },
+    {
+      "party": "R",
+      "district_id": "c"
+    }
+  ]
+]

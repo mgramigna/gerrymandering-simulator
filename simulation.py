@@ -1,6 +1,7 @@
 import random
 import math
 import argparse
+import json
 import numpy as np
 from uuid import uuid4
 from copy import copy
@@ -9,19 +10,38 @@ from models import Districting, Precinct
 # Picks a random integer between 0 and n-1
 pick_rand_idx = lambda n: int(math.floor(random.random()*n))
 
-def main(n, step_length, trials):
+def main(n, step_length, trials, filepath):
+    """
+    Read in a user-defined districting and run the simulation
+
+    Args:
+        n (int): dimension of the grid
+        step_length (str): number of `flips` to do for the grid
+        trials (int): number of separate simulations to run for this grid
+        filepath (str): path to the json file specifying the districting
+    """
     grid = np.empty(shape=(n,n), dtype=Precinct)
-    for row in range(n):
-        dist_id = str(row)
-        #dist_id = str(uuid4())
-        for col in range(n):
-            party = 'rep' if random.random() < .5 else 'dem'
-            grid[row, col] = Precinct(party, dist_id)
+    with open(filepath) as f:
+        data = json.load(f)
+
+    row,col = (0,0)
+    for d in data:
+        for p in d:
+            grid[row,col] = Precinct(p.get('party'), p.get('district_id'))
+            col += 1
+        row += 1
+        col = 0
 
     dist = Districting(grid)
+    if not dist.is_valid():
+        print 'Proposed districting is not valid'
+        return
+
+    print 'Original Districting\n---------------\n\n', dist
+
     for t in range(trials):
-        old,new,dist = simulate(step_length, dist)
-        print 'result\n\n',dist, dist.is_valid()
+        old,new,result = simulate(step_length, dist)
+        print 'Resulting Districting\n---------------\n\n', result
 
 def simulate(length, dist):
     """
@@ -62,6 +82,7 @@ if __name__ == "__main__":
     parser.add_argument('-d', '--dimension', required=True, type=int, help='Dimension of the grid (integer)')
     parser.add_argument('-s', '--steps', required=True, type=int, help='Number of steps to take for the random walk')
     parser.add_argument('-n', '--num-simulations', required=True, type=int, help='Number of simulations to run')
+    parser.add_argument('-f', '--file', required=True, type=str, help="JSON file representing the grid to simulate on")
 
     args = parser.parse_args()
-    main(args.dimension,args.steps,args.num_simulations)
+    main(args.dimension,args.steps,args.num_simulations,args.file)
