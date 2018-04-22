@@ -1,4 +1,14 @@
+from uuid import uuid4
 from collections import defaultdict
+
+class Precinct(object):
+    def __init__(self, party, district_id):
+        self.id = str(uuid4())
+        self.party = party
+        self.district_id = district_id
+
+    def __str__(self):
+        return "%s,%s      " % (self.party,self.district_id)
 
 class Districting(object):
     """
@@ -18,7 +28,8 @@ class Districting(object):
         s = ''
         for row in range(self.n):
             for col in range(self.n):
-                s += str(self.grid[row][col]) + '\n'
+                s += str(self.grid[row][col])
+            s += '\n'
         return s
 
     def get_neighbors(self,row,col):
@@ -50,7 +61,24 @@ class Districting(object):
 
         for row in range(self.n):
             for col in range(self.n):
-                party, district = self.grid[row,col]
-                districts[district][party] += 1
+                precinct = self.grid[row,col]
+                districts[precinct.district_id][precinct.party] += 1
 
         return districts
+
+    def is_valid(self):
+        return self.__is_contiguous()
+
+    def flip(self,precinct,neighbor,row,col):
+        self.grid[row,col] = Precinct(precinct.party, neighbor.district_id)
+
+    def __is_contiguous(self):
+        contiguous_precinct_count = 0
+        for row in range(self.n):
+            for col in range(self.n):
+                neighbors = self.get_neighbors(row,col)
+                for neighbor in neighbors:
+                    if neighbor.district_id == self.grid[row,col].district_id:
+                        contiguous_precinct_count += 1
+                        break
+        return contiguous_precinct_count == self.n**2
