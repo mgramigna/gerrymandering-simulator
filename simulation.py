@@ -35,7 +35,7 @@ def simulate(length, dist):
     for i in range(length):
         row, col = pick_rand_idx(dist.n), pick_rand_idx(dist.n)
         precinct = dist.grid[row,col]
-        neighbors = dist.get_neighbors(row,col)
+        neighbors = dist.get_neighbors(precinct)
         for neighbor in neighbors:
             if neighbor.district_id != precinct.district_id:
                 proposed_dist = Districting(copy(dist.grid))

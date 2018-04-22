@@ -1,3 +1,4 @@
+import numpy as np
 from uuid import uuid4
 from collections import defaultdict
 
@@ -22,17 +23,18 @@ class Districting(object):
     """
     def __init__(self, grid):
         self.grid = grid
+        self.shape = grid.shape
         self.n = grid.shape[0]
 
     def __str__(self):
         s = ''
-        for row in range(self.n):
-            for col in range(self.n):
-                s += str(self.grid[row][col])
-            s += '\n'
+        for row,col in np.ndindex(self.shape):
+            s += str(self.grid[row][col])
+            if col == self.n-1:
+                s += '\n'
         return s
 
-    def get_neighbors(self,row,col):
+    def get_neighbors(self,precinct):
         """
         Get all (non-diagonal) neighbors for a given precinct
 
@@ -41,6 +43,7 @@ class Districting(object):
             col (int): index for the column of the precinct
         """
         neighbors = []
+        row,col = self.__index_of(precinct)
 
         if row-1 >= 0:
             neighbors.append(self.grid[row-1,col])
@@ -59,10 +62,9 @@ class Districting(object):
         """
         districts = defaultdict(lambda: defaultdict(int))
 
-        for row in range(self.n):
-            for col in range(self.n):
-                precinct = self.grid[row,col]
-                districts[precinct.district_id][precinct.party] += 1
+        for row,col in np.ndindex(self.shape):
+            precinct = self.grid[row,col]
+            districts[precinct.district_id][precinct.party] += 1
 
         return districts
 
@@ -74,11 +76,15 @@ class Districting(object):
 
     def __is_contiguous(self):
         contiguous_precinct_count = 0
-        for row in range(self.n):
-            for col in range(self.n):
-                neighbors = self.get_neighbors(row,col)
-                for neighbor in neighbors:
-                    if neighbor.district_id == self.grid[row,col].district_id:
-                        contiguous_precinct_count += 1
-                        break
+        for row,col in np.ndindex(self.shape):
+            neighbors = self.get_neighbors(self.grid[row,col])
+            for neighbor in neighbors:
+                if neighbor.district_id == self.grid[row,col].district_id:
+                    contiguous_precinct_count += 1
+                    break
         return contiguous_precinct_count == self.n**2
+    def __index_of(self, precinct):
+        for row,col in np.ndindex(self.shape):
+            if self.grid[row,col].id == precinct.id:
+                return (row,col)
+        return (-1,-1)
