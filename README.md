@@ -9,7 +9,7 @@ The simulator takes a JSON file as input detailing the districting, see `example
 For generating 10 5-step simulations on the 3x3 grid defined in `example3x3.json`, the command would be the following:
 
 ```
-$ python simulation.py --dimension 3 --steps 5 --num-simulations 10
+$ python simulation.py --dimension 3 --steps 5 --num-simulations 10 --file example3x3.json
 ```
 
 The simulation gave the following districtings:
