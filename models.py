@@ -86,7 +86,7 @@ class Districting(object):
         Returns:
             bool: True if the districting is valid, False otherwise
         """
-        return self.__is_contiguous() and self.__is_connected()
+        return self.__is_contiguous() and self.__is_connected() and self.__is_population_valid()
 
     def flip(self,precinct,neighbor):
         """
@@ -163,6 +163,26 @@ class Districting(object):
             if precincts_per_district[current_district]['seen'] != precincts_per_district[current_district]['expected']:
                 return False
         return True
+
+    def __is_population_valid(self):
+        """
+        Determine if the population spread is valid
+
+        Note:
+            This is pretty arbitrary, but right now I set no two districts to have a population difference greater than the number of rows plus the number of columns
+
+        Returns:
+            bool: True if the population spread is valid, false otherwise
+        """
+        populations = defaultdict(int)
+        for _, precinct in np.ndenumerate(self.grid):
+            populations[precinct.district_id] += 1
+
+        ordered_populations = sorted(populations.items(), key=lambda p: p[1])
+        max = ordered_populations[len(ordered_populations)-1][1]
+        min = ordered_populations[0][1]
+
+        return max - min <= self.rows+self.cols
 
     def __index_of(self, precinct):
         """
