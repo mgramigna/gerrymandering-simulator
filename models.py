@@ -95,8 +95,6 @@ class Districting(object):
         Args:
             precinct (Precinct): the precinct being absorbed
             neighbor (Precinct): the neighboring precinct in the district that is being absorbed
-            row (int): row of the precinct
-            col (int): column of the precinct
         """
         row,col = self.__index_of(precinct)
         self.grid[row,col] = Precinct(precinct.party, neighbor.district_id)
