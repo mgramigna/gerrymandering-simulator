@@ -78,11 +78,11 @@ def simulate(length, dist):
 
                 # create a proposed districting as if we were to flip this precinct with the neighbor
                 proposed_dist = Districting(copy(dist.grid))
-                proposed_dist.grid[row,col] = Precinct(precinct.party, neighbor.district_id)
+                proposed_dist.flip(precinct, neighbor)
 
                 # apply the flip to the original districting if the proposed districting is valid
                 if proposed_dist.is_valid():
-                    dist.flip(precinct, neighbor, row, col)
+                    dist.flip(precinct, neighbor)
                     break
     return old_party_count, dist.get_party_count(), dist
 

@@ -88,7 +88,7 @@ class Districting(object):
         """
         return self.__is_contiguous() and self.__is_connected()
 
-    def flip(self,precinct,neighbor,row,col):
+    def flip(self,precinct,neighbor):
         """
         Absorb a given precinct into the neighboring district
 
@@ -98,6 +98,7 @@ class Districting(object):
             row (int): row of the precinct
             col (int): column of the precinct
         """
+        row,col = self.__index_of(precinct)
         self.grid[row,col] = Precinct(precinct.party, neighbor.district_id)
 
     def __is_contiguous(self):
