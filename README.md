@@ -1,6 +1,6 @@
 # Gerrymandering Simulator
 
-A simulator for detecting potential bias in an NxN districting grid
+A simulator for detecting potential bias in an MxN districting grid
 
 ## Usage
 
@@ -9,7 +9,7 @@ The simulator takes a JSON file as input detailing the districting, see `example
 For generating 10 5-step simulations on the 3x3 grid defined in `example3x3.json`, the command would be the following:
 
 ```
-$ python simulation.py --dimension 3 --steps 5 --num-simulations 10 --file example3x3.json
+$ python simulation.py --rows 3 --cols 3 --steps 5 --num-simulations 10 --file example3x3.json
 ```
 
 The simulation gave the following districtings:
@@ -99,14 +99,14 @@ The command line args can be viewed with the `-h` flag:
 
 ```
 $ python simulation.py --help
-usage: simulation.py [-h] -d DIMENSION -s STEPS -n NUM_SIMULATIONS -f FILE
+usage: simulation.py [-h] -r ROWS -c COLS -s STEPS -n NUM_SIMULATIONS -f FILE
 
 Run the gerrymandering simulator on an nxn grid
 
 optional arguments:
   -h, --help            show this help message and exit
-  -d DIMENSION, --dimension DIMENSION
-                        Dimension of the grid (integer)
+  -r ROWS, --rows ROWS  Number of rows in the grid
+  -c COLS, --cols COLS  Number of columns in the grid
   -s STEPS, --steps STEPS
                         Number of steps to take for the random walk
   -n NUM_SIMULATIONS, --num-simulations NUM_SIMULATIONS

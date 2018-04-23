@@ -26,7 +26,8 @@ class Districting(object):
     Class representing a districting grid
 
     Note:
-        self.n is assigned automatically based on the shape of the `grid` arg
+        self.rows is assigned automatically based on the shape of the `grid` arg
+        self.cols is assigned automatically based on the shape of the `grid` arg
         self.shape is assigned automatically for ease of use in further iterating of the grid
 
     Args:
@@ -35,13 +36,13 @@ class Districting(object):
     def __init__(self, grid):
         self.grid = grid
         self.shape = grid.shape
-        self.n = grid.shape[0]
+        self.rows, self.cols = grid.shape
 
     def __str__(self):
         s = ''
         for row,col in np.ndindex(self.shape):
             s += str(self.grid[row][col])
-            if col == self.n-1:
+            if col == self.cols-1:
                 s += '\n'
         return s
 
@@ -57,11 +58,11 @@ class Districting(object):
 
         if row-1 >= 0:
             neighbors.append(self.grid[row-1,col])
-        if row+1 < self.n:
+        if row+1 < self.rows:
             neighbors.append(self.grid[row+1,col])
         if col-1 >= 0:
             neighbors.append(self.grid[row, col-1])
-        if col+1 < self.n:
+        if col+1 < self.cols:
             neighbors.append(self.grid[row,col+1])
 
         return neighbors
@@ -117,7 +118,7 @@ class Districting(object):
                     break
 
         # all precincts should be contiguous
-        return contiguous_precinct_count == self.n**2
+        return contiguous_precinct_count == self.rows*self.cols
 
     def __is_connected(self):
         """
