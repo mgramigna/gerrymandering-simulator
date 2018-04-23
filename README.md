@@ -2,6 +2,14 @@
 
 A simulator for detecting potential bias in an MxN districting grid
 
+## Dependencies
+
+The only package required for running the simulator is [numpy](http://www.numpy.org/). It is installable via [pip](https://pypi.org/project/pip/):
+
+```
+$ pip install numpy
+```
+
 ## Usage
 
 The simulator takes a JSON file as input detailing the districting, see `example3x3.json` for an example 3x3 districting.
