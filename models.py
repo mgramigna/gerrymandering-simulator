@@ -1,3 +1,4 @@
+import random
 import numpy as np
 from uuid import uuid4
 from collections import defaultdict
@@ -65,6 +66,7 @@ class Districting(object):
         if col+1 < self.cols:
             neighbors.append(self.grid[row,col+1])
 
+        random.shuffle(neighbors)
         return neighbors
 
     def get_party_count(self):
