@@ -34,71 +34,71 @@ Resulting Districting
 ---------------
 
 D,a      D,a      R,b
+R,a      D,b      R,b
+R,c      R,c      R,c
+
+Resulting Districting
+---------------
+
+D,a      D,a      R,b
+R,b      D,b      R,b
+R,c      R,c      R,c
+
+Resulting Districting
+---------------
+
+D,a      D,a      R,b
+R,a      D,b      R,b
+R,c      R,c      R,c
+
+Resulting Districting
+---------------
+
+D,c      D,a      R,a
+R,c      D,b      R,b
+R,c      R,c      R,c
+
+Resulting Districting
+---------------
+
+D,a      D,a      R,a
 R,c      D,b      R,b
 R,c      R,c      R,b
 
 Resulting Districting
 ---------------
 
-D,a      D,a      R,b
-R,a      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,a      D,a      R,b
-R,a      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,a      D,a      R,b
-R,a      D,c      R,b
+D,c      D,a      R,a
+R,c      D,b      R,b
 R,c      R,c      R,b
 
 Resulting Districting
 ---------------
 
+D,a      D,a      R,a
+R,c      D,b      R,b
+R,c      R,c      R,c
+
+Resulting Districting
+---------------
+
+D,c      D,a      R,a
+R,c      D,b      R,b
+R,c      R,c      R,c
+
+Resulting Districting
+---------------
+
+D,c      D,a      R,a
+R,c      D,b      R,b
+R,c      R,c      R,c
+
+Resulting Districting
+---------------
+
 D,a      D,a      R,b
-R,a      D,c      R,b
-R,a      R,c      R,b
-
-Resulting Districting
----------------
-
-D,a      D,c      R,b
-R,a      D,c      R,b
-R,a      R,a      R,a
-
-Resulting Districting
----------------
-
-D,a      D,c      R,b
-R,a      D,c      R,b
-R,a      R,a      R,a
-
-Resulting Districting
----------------
-
-D,a      D,c      R,b
-R,a      D,c      R,b
-R,a      R,a      R,a
-
-Resulting Districting
----------------
-
-D,a      D,c      R,b
-R,a      D,c      R,b
-R,a      R,a      R,a
-
-Resulting Districting
----------------
-
-D,c      D,c      R,b
-R,a      D,c      R,b
-R,a      R,a      R,b
+R,b      D,b      R,b
+R,c      R,c      R,b
 ```
 
 Note that all of the districtings are simply connected and contiguous, adhering to the rules specificied for districtings of a state.
