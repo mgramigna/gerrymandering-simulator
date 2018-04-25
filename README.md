@@ -20,89 +20,6 @@ For generating 10 5-step simulations on the 3x3 grid defined in `example3x3.json
 $ python simulation.py --steps 5 --num-simulations 10 --file example3x3.json
 ```
 
-The simulation gave the following districtings:
-
-```
-Original Districting
----------------
-
-D,a      D,a      R,b
-R,a      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,a      D,a      R,b
-R,a      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,a      D,a      R,b
-R,b      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,a      D,a      R,b
-R,a      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,c      D,a      R,a
-R,c      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,a      D,a      R,a
-R,c      D,b      R,b
-R,c      R,c      R,b
-
-Resulting Districting
----------------
-
-D,c      D,a      R,a
-R,c      D,b      R,b
-R,c      R,c      R,b
-
-Resulting Districting
----------------
-
-D,a      D,a      R,a
-R,c      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,c      D,a      R,a
-R,c      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,c      D,a      R,a
-R,c      D,b      R,b
-R,c      R,c      R,c
-
-Resulting Districting
----------------
-
-D,a      D,a      R,b
-R,b      D,b      R,b
-R,c      R,c      R,b
-```
-
-Note that all of the districtings are simply connected and contiguous, adhering to the rules specificied for districtings of a state.
-
 The command line args can be viewed with the `-h` flag:
 
 ```
@@ -119,3 +36,11 @@ optional arguments:
                         Number of simulations to run
   -f FILE, --file FILE  JSON file representing the grid to simulate on
 ```
+
+## Output
+
+There are two units of output for the simulation. one is a file of the form `XXXXXX-results` which prints out all of the districtings that were achieved during the simulations to a file.
+
+There is also a graph printed showing the distribution of the Efficiency Gap values for the simulation like so:
+
+![](sim5x10.png)
