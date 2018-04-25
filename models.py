@@ -101,6 +101,40 @@ class Districting(object):
         row,col = self.__index_of(precinct)
         self.grid[row,col] = Precinct(precinct.party, neighbor.district_id)
 
+    def get_efficiency_gap(self):
+        """
+        Calculate the EG value for a given districting
+
+        Note:
+            See the referenced paper for the formula
+        """
+        district_votes = defaultdict(lambda: defaultdict(float))
+        total_votes = defaultdict(float)
+        wins = defaultdict(float)
+        T = 0.0
+        S = 0.0
+        parties = set()
+
+        for coords, p in np.ndenumerate(self.grid):
+            district_votes[p.district_id][p.party] += 1.0
+            total_votes[p.party] += 1.0
+            parties.add(p.party)
+            T += 1.0
+
+        parties = tuple(parties)
+
+        for d in district_votes:
+            winner,_ = max(district_votes[d].items(), key=lambda x: x[1])
+            wins[winner] += 1.0
+            S += 1.0
+
+        TA = total_votes[parties[0]]
+        TB = total_votes[parties[1]]
+        SA = wins[parties[0]]
+        SB = wins[parties[1]]
+
+        return ((TA-TB)/T) - (.5*((SA-SB)/S))
+
     def __is_contiguous(self):
         """
         Private function for testing if a grid contains contiguous districts
