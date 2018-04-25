@@ -3,6 +3,7 @@ import math
 import argparse
 import json
 import numpy as np
+import matplotlib.pyplot as plt
 from uuid import uuid4
 from copy import copy
 from models import Districting, Precinct
@@ -42,11 +43,20 @@ def main(step_length, trials, filepath):
         print 'ERROR: Proposed districting is not valid'
         return
 
-    print 'Original Districting\n---------------\n\n', dist
+    original_eg = dist.get_efficiency_gap()
 
+    fd = open('%s-results' % (str(uuid4())), 'w')
+    fd.write("EG = %f\n\n%s\n----------------\n\n" % (original_eg, str(dist)))
+    egs = []
     for t in range(trials):
-        old,new,result = simulate(step_length, dist)
-        print 'Resulting Districting\n---------------\n\n', result
+        result, eg = simulate(step_length, dist)
+        egs.append(eg)
+        fd.write(str(dist) + '\n\n')
+    fd.close()
+    plt.title('Original EG = %f' % (original_eg,))
+    plt.hist(egs)
+    plt.show()
+
 
 def simulate(length, dist):
     """
@@ -57,10 +67,11 @@ def simulate(length, dist):
         dist (numpy.ndarray): original districting before the simulation
 
     Returns:
+        Districting: the resulting districting of the simulation
+        float: the efficiency gap value for the resulting districting
     """
 
     # get party voting counts before the simulatinos
-    old_party_count = dist.get_party_count()
     for i in range(length):
 
         # pick a random cell in the grid
@@ -80,7 +91,7 @@ def simulate(length, dist):
                 if proposed_dist.is_valid():
                     dist.flip(precinct, neighbor)
                     break
-    return old_party_count, dist.get_party_count(), dist
+    return dist, dist.get_efficiency_gap()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run the gerrymandering simulator on an nxn grid')
