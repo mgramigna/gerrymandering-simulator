@@ -69,18 +69,6 @@ class Districting(object):
         random.shuffle(neighbors)
         return neighbors
 
-    def get_party_count(self):
-        """
-        Gets the number of precincts for each party in all districts
-        """
-        districts = defaultdict(lambda: defaultdict(int))
-
-        for row,col in np.ndindex(self.shape):
-            precinct = self.grid[row,col]
-            districts[precinct.district_id][precinct.party] += 1
-
-        return districts
-
     def is_valid(self):
         """
         Tests if a given districting is valid (simply connected and has contiguous districts)
