@@ -1,0 +1,392 @@
+[
+  [{
+      "party": "D",
+      "district_id": "a"
+    },
+    {
+      "party": "D",
+      "district_id": "a"
+    },
+    {
+      "party": "R",
+      "district_id": "a"
+    },
+    {
+      "party": "D",
+      "district_id": "a"
+    },
+    {
+      "party": "D",
+      "district_id": "a"
+    },
+    {
+      "party": "R",
+      "district_id": "a"
+    }, {
+      "party": "R",
+      "district_id": "a"
+    },
+    {
+      "party": "D",
+      "district_id": "a"
+    },
+    {
+      "party": "R",
+      "district_id": "a"
+    }, {
+      "party": "R",
+      "district_id": "a"
+    }
+  ],
+  [{
+      "party": "D",
+      "district_id": "b"
+    },
+    {
+      "party": "D",
+      "district_id": "b"
+    },
+    {
+      "party": "R",
+      "district_id": "b"
+    },
+    {
+      "party": "D",
+      "district_id": "b"
+    },
+    {
+      "party": "D",
+      "district_id": "b"
+    },
+    {
+      "party": "R",
+      "district_id": "b"
+    }, {
+      "party": "R",
+      "district_id": "b"
+    },
+    {
+      "party": "D",
+      "district_id": "b"
+    },
+    {
+      "party": "R",
+      "district_id": "b"
+    }, {
+      "party": "R",
+      "district_id": "b"
+    }
+  ],
+  [{
+      "party": "R",
+      "district_id": "c"
+    },
+    {
+      "party": "R",
+      "district_id": "c"
+    },
+    {
+      "party": "R",
+      "district_id": "c"
+    },
+    {
+      "party": "D",
+      "district_id": "c"
+    },
+    {
+      "party": "D",
+      "district_id": "c"
+    },
+    {
+      "party": "R",
+      "district_id": "c"
+    }, {
+      "party": "R",
+      "district_id": "c"
+    },
+    {
+      "party": "D",
+      "district_id": "c"
+    },
+    {
+      "party": "R",
+      "district_id": "c"
+    }, {
+      "party": "R",
+      "district_id": "c"
+    }
+  ],
+  [{
+      "party": "D",
+      "district_id": "d"
+    },
+    {
+      "party": "D",
+      "district_id": "d"
+    },
+    {
+      "party": "D",
+      "district_id": "d"
+    },
+    {
+      "party": "D",
+      "district_id": "d"
+    },
+    {
+      "party": "R",
+      "district_id": "d"
+    },
+    {
+      "party": "R",
+      "district_id": "d"
+    }, {
+      "party": "R",
+      "district_id": "d"
+    },
+    {
+      "party": "D",
+      "district_id": "d"
+    },
+    {
+      "party": "R",
+      "district_id": "d"
+    }, {
+      "party": "R",
+      "district_id": "d"
+    }
+  ],
+  [{
+      "party": "D",
+      "district_id": "e"
+    },
+    {
+      "party": "D",
+      "district_id": "e"
+    },
+    {
+      "party": "R",
+      "district_id": "e"
+    },
+    {
+      "party": "D",
+      "district_id": "e"
+    },
+    {
+      "party": "D",
+      "district_id": "e"
+    },
+    {
+      "party": "R",
+      "district_id": "e"
+    }, {
+      "party": "R",
+      "district_id": "e"
+    },
+    {
+      "party": "D",
+      "district_id": "e"
+    },
+    {
+      "party": "R",
+      "district_id": "e"
+    }, {
+      "party": "R",
+      "district_id": "e"
+    }
+  ],
+  [{
+      "party": "D",
+      "district_id": "f"
+    },
+    {
+      "party": "D",
+      "district_id": "f"
+    },
+    {
+      "party": "R",
+      "district_id": "f"
+    },
+    {
+      "party": "D",
+      "district_id": "f"
+    },
+    {
+      "party": "D",
+      "district_id": "f"
+    },
+    {
+      "party": "R",
+      "district_id": "f"
+    }, {
+      "party": "R",
+      "district_id": "f"
+    },
+    {
+      "party": "D",
+      "district_id": "f"
+    },
+    {
+      "party": "R",
+      "district_id": "f"
+    }, {
+      "party": "R",
+      "district_id": "f"
+    }
+  ],
+  [{
+      "party": "D",
+      "district_id": "g"
+    },
+    {
+      "party": "D",
+      "district_id": "g"
+    },
+    {
+      "party": "R",
+      "district_id": "g"
+    },
+    {
+      "party": "D",
+      "district_id": "g"
+    },
+    {
+      "party": "D",
+      "district_id": "g"
+    },
+    {
+      "party": "R",
+      "district_id": "g"
+    }, {
+      "party": "R",
+      "district_id": "g"
+    },
+    {
+      "party": "D",
+      "district_id": "g"
+    },
+    {
+      "party": "R",
+      "district_id": "g"
+    }, {
+      "party": "R",
+      "district_id": "g"
+    }
+  ],
+  [{
+      "party": "R",
+      "district_id": "h"
+    },
+    {
+      "party": "R",
+      "district_id": "h"
+    },
+    {
+      "party": "R",
+      "district_id": "h"
+    },
+    {
+      "party": "D",
+      "district_id": "h"
+    },
+    {
+      "party": "D",
+      "district_id": "h"
+    },
+    {
+      "party": "R",
+      "district_id": "h"
+    }, {
+      "party": "R",
+      "district_id": "h"
+    },
+    {
+      "party": "D",
+      "district_id": "h"
+    },
+    {
+      "party": "R",
+      "district_id": "h"
+    }, {
+      "party": "R",
+      "district_id": "h"
+    }
+  ],
+  [{
+      "party": "D",
+      "district_id": "i"
+    },
+    {
+      "party": "D",
+      "district_id": "i"
+    },
+    {
+      "party": "D",
+      "district_id": "i"
+    },
+    {
+      "party": "D",
+      "district_id": "i"
+    },
+    {
+      "party": "R",
+      "district_id": "i"
+    },
+    {
+      "party": "R",
+      "district_id": "i"
+    }, {
+      "party": "R",
+      "district_id": "i"
+    },
+    {
+      "party": "D",
+      "district_id": "i"
+    },
+    {
+      "party": "R",
+      "district_id": "i"
+    }, {
+      "party": "R",
+      "district_id": "i"
+    }
+  ],
+  [{
+      "party": "D",
+      "district_id": "j"
+    },
+    {
+      "party": "D",
+      "district_id": "j"
+    },
+    {
+      "party": "R",
+      "district_id": "j"
+    },
+    {
+      "party": "D",
+      "district_id": "j"
+    },
+    {
+      "party": "D",
+      "district_id": "j"
+    },
+    {
+      "party": "R",
+      "district_id": "j"
+    }, {
+      "party": "R",
+      "district_id": "j"
+    },
+    {
+      "party": "D",
+      "district_id": "j"
+    },
+    {
+      "party": "R",
+      "district_id": "j"
+    }, {
+      "party": "R",
+      "district_id": "j"
+    }
+  ]
+]
