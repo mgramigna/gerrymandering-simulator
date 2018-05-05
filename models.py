@@ -178,10 +178,13 @@ class Districting(object):
                 precinct = searcher.pop()
                 precincts_per_district[precinct.district_id]['seen'] += 1
                 seen.add(precinct.id)
-                searcher.extend([
-                    n for n in self.get_neighbors(precinct)
-                    if n.id not in seen and n.district_id == precinct.district_id
-                ])
+                neighbors = self.get_neighbors(precinct)
+                nodes = []
+                for n in neighbors:
+                    if n.id not in seen and n.district_id == precinct.district_id:
+                        seen.add(n.id)
+                        nodes.append(n)
+                searcher.extend(nodes)
 
             # after we process this district, we should have searched all precincts with that distrcits if the grid is connected
             if precincts_per_district[current_district]['seen'] != precincts_per_district[current_district]['expected']:
